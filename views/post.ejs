@@ -1,0 +1,49 @@
+<%- include('partials/header', { pageTitle: post.title }) %>
+
+<article class="single-post">
+
+  <div class="single-post-hero">
+    <div class="single-post-meta">
+      <a href="/" class="back-link">← Back to all posts</a>
+      <span class="post-category post-category--large"><%= post.category %></span>
+    </div>
+
+    <h1 class="single-post-title"><%= post.title %></h1>
+
+    <div class="single-post-byline">
+      <span class="post-author-name"><%= post.author %></span>
+      <span class="byline-sep">—</span>
+      <time class="post-date"><%= formatDate(post.date) %></time>
+      <% if (post.updatedAt) { %>
+        <span class="updated-badge">Updated</span>
+      <% } %>
+      <span class="byline-sep">·</span>
+      <span class="post-read"><%= post.readTime %> min read</span>
+    </div>
+
+    <div class="single-post-rule"></div>
+  </div>
+
+  <div class="single-post-body">
+    <div class="post-content">
+      <% post.content.split('\n\n').forEach(para => { %>
+        <% if (para.trim()) { %>
+          <p><%= para.trim() %></p>
+        <% } %>
+      <% }) %>
+    </div>
+  </div>
+
+  <div class="single-post-footer">
+    <div class="post-footer-actions">
+      <a href="/posts/<%= post.id %>/edit" class="btn-primary">Edit this post</a>
+      <form action="/posts/<%= post.id %>/delete" method="POST" class="delete-form" onsubmit="return confirmDelete(event)">
+        <button type="submit" class="btn-danger">Delete post</button>
+      </form>
+    </div>
+    <a href="/" class="btn-ghost">← All Posts</a>
+  </div>
+
+</article>
+
+<%- include('partials/footer') %>

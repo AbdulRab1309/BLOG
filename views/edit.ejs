@@ -1,0 +1,88 @@
+<%- include('partials/header', { pageTitle: 'Edit Post' }) %>
+
+<div class="form-page">
+  <div class="form-page-header">
+    <a href="/posts/<%= post.id %>" class="back-link">← Back to post</a>
+    <h1 class="form-page-title">Edit Post</h1>
+    <p class="form-page-sub">Refine your words.</p>
+  </div>
+
+  <% if (error) { %>
+    <div class="form-error">
+      <span class="error-icon">⚠</span>
+      <%= error %>
+    </div>
+  <% } %>
+
+  <form action="/posts/<%= post.id %>/edit" method="POST" class="post-form">
+    <div class="form-field">
+      <label for="title" class="form-label">Title <span class="required">*</span></label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        class="form-input form-input--large"
+        value="<%= post.title %>"
+        required
+        autocomplete="off"
+      />
+    </div>
+
+    <div class="form-row">
+      <div class="form-field">
+        <label for="author" class="form-label">Author</label>
+        <input
+          type="text"
+          id="author"
+          name="author"
+          class="form-input"
+          value="<%= post.author %>"
+          autocomplete="off"
+        />
+      </div>
+
+      <div class="form-field">
+        <label for="category" class="form-label">Category</label>
+        <input
+          type="text"
+          id="category"
+          name="category"
+          class="form-input"
+          value="<%= post.category %>"
+          list="category-suggestions"
+          autocomplete="off"
+        />
+        <datalist id="category-suggestions">
+          <option value="Technology">
+          <option value="Writing">
+          <option value="Design">
+          <option value="Philosophy">
+          <option value="Science">
+          <option value="Culture">
+          <option value="Personal">
+          <option value="General">
+        </datalist>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="content" class="form-label">Content <span class="required">*</span></label>
+      <div class="textarea-hint">Separate paragraphs with a blank line.</div>
+      <textarea
+        id="content"
+        name="content"
+        class="form-textarea"
+        required
+        rows="16"
+      ><%= post.content %></textarea>
+      <div class="word-counter"><span id="word-count">0</span> words · <span id="read-time">0</span> min read</div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-primary btn-publish">Save Changes</button>
+      <a href="/posts/<%= post.id %>" class="btn-ghost">Cancel</a>
+    </div>
+  </form>
+</div>
+
+<%- include('partials/footer') %>
