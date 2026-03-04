@@ -46,6 +46,7 @@ Most importantly, lasting software solves real problems. It doesn't try to be cl
 app.set("view engine", "ejs");
 app.set("views", "./views");
 app.use(express.static("Public"));
+app.use(express.static("views/js"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
