@@ -158,3 +158,5 @@ app.post("/posts/:id/delete", (req, res) => {
 app.listen(PORT, () => {
   console.log(`\n  📝  Blog running at http://localhost:${PORT}\n`);
 });
+
+export default app;
