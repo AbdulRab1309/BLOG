@@ -524,7 +524,7 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
 
 .form-input {
   border: 1px solid var(--cream-dark);
-  background: var(--white);
+  background: var(--cream-mid);
   padding: 0.7rem 1rem;
   font-family: var(--font-body);
   font-size: 0.95rem;
@@ -546,11 +546,11 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
   box-shadow: 0 0 0 3px rgba(181, 145, 58, 0.12);
 }
 
-.form-input::placeholder { color: var(--cream-dark); }
+.form-input::placeholder { color: var(--ink-faint); }
 
 .form-textarea {
   border: 1px solid var(--cream-dark);
-  background: var(--white);
+  background: var(--cream-mid);
   padding: 1rem;
   font-family: var(--font-body);
   font-size: 1rem;
