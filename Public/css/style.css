@@ -26,6 +26,18 @@
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* ── Dark Mode ────────────────────────────────────────────── */
+body.dark-mode {
+  --ink:       #1e1714;
+  --ink-mid:   #2a211c;
+  --ink-soft:  #3a302a;
+  --ink-faint: #4a4038;
+  --cream:     #f2ece6;
+  --cream-mid: #e6d9cc;
+  --cream-dark:#d4cbc0;
+  --gold:      #e6c06e;
+}
+
 /* ── Reset ─────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { font-size: 18px; scroll-behavior: smooth; }
@@ -40,6 +52,7 @@ body {
   display: flex;
   flex-direction: column;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -90,7 +103,44 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
 }
 .site-logo:hover { opacity: 0.7; }
 
-.header-actions { display: flex; justify-content: flex-end; }
+.header-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-theme {
+  font-size: 1.2rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cream-dark);
+  color: var(--ink);
+  transition: background 0.3s, transform 0.15s;
+  cursor: pointer;
+}
+
+.btn-theme:hover {
+  background: var(--cream-mid);
+  transform: scale(1.1);
+}
+
+.btn-theme:active {
+  transform: scale(0.95);
+}
+
+.theme-icon {
+  display: inline-block;
+  transition: transform 0.4s ease;
+}
+
+body.dark-mode .theme-icon {
+  content: '☀️';
+}
 
 .btn-write {
   font-family: var(--font-mono);
@@ -524,7 +574,7 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
 
 .form-input {
   border: 1px solid var(--cream-dark);
-  background: var(--white);
+  background: var(--cream-mid);
   padding: 0.7rem 1rem;
   font-family: var(--font-body);
   font-size: 0.95rem;
@@ -546,11 +596,11 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
   box-shadow: 0 0 0 3px rgba(181, 145, 58, 0.12);
 }
 
-.form-input::placeholder { color: var(--cream-dark); }
+.form-input::placeholder { color: var(--ink-faint); }
 
 .form-textarea {
   border: 1px solid var(--cream-dark);
-  background: var(--white);
+  background: var(--cream-mid);
   padding: 1rem;
   font-family: var(--font-body);
   font-size: 1rem;

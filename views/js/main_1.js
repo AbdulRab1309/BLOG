@@ -46,3 +46,37 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(card);
   });
 });
+
+// ── Dark Mode Toggle ───────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  const darkModeToggle = document.getElementById('dark-mode-toggle');
+  const themeIcon = document.querySelector('.theme-icon');
+  const htmlElement = document.documentElement;
+  const body = document.body;
+
+  // Check for saved dark mode preference or system preference
+  const savedTheme = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const isDarkMode = savedTheme === 'dark' || (savedTheme === null && prefersDark);
+
+  // Apply saved theme on page load
+  if (isDarkMode) {
+    body.classList.add('dark-mode');
+    updateThemeIcon(true);
+  }
+
+  // Toggle dark mode
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener('click', () => {
+      const isCurrentlyDark = body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', isCurrentlyDark ? 'dark' : 'light');
+      updateThemeIcon(isCurrentlyDark);
+    });
+  }
+
+  function updateThemeIcon(isDark) {
+    if (themeIcon) {
+      themeIcon.textContent = isDark ? '☀️' : '🌙';
+    }
+  }
+});
