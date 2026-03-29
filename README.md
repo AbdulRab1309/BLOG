@@ -11,7 +11,7 @@
 
 ## Overview
 
-**BLOG** is a full-stack blog web application that allows users to create, read, update, and delete blog posts — all within a beautifully designed editorial interface. Built as a capstone project using Node.js, Express.js, and EJS templating, the application demonstrates core web development skills including server-side routing, dynamic HTML rendering, form handling, and responsive CSS design.
+**BLOG** is a full-stack blog web application that allows users to create, read, update, and delete blog posts — all within a beautifully designed editorial interface. Built as a capstone project using Node.js, Express.js, and EJS templating, the application demonstrates core web development skills including server-side routing, dynamic HTML rendering, form handling, and responsive CSS design and User responsive Dark and Light Modes.
 
 Posts are stored in-memory and do not persist between server sessions — no database is required.
 
